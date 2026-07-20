@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Xueyi Wei — Finance, AI and hard-tech investment research.">
+  <title>Xueyi Wei | Finance × AI × Hard Tech</title>
+  <style>
+    :root{
+      --bg:#090d18;--soft:#101727;--card:rgba(18,26,43,.82);--text:#f4f6f8;
+      --muted:#9ca8ba;--line:rgba(255,255,255,.12);--accent:#b9ff66;
+      --accent-ink:#142005;--blue:#7da8ff;--shadow:0 24px 80px rgba(0,0,0,.28);
+      --page:min(1160px,calc(100% - 40px))
+    }
+    html[data-theme="light"]{
+      --bg:#f3f2ee;--soft:#e8e7e1;--card:rgba(255,255,255,.84);--text:#111722;
+      --muted:#5f6976;--line:rgba(17,23,34,.13);--accent:#68a313;
+      --accent-ink:#fff;--blue:#345fd5;--shadow:0 24px 70px rgba(20,28,45,.11)
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;min-width:320px;color:var(--text);background:
+      radial-gradient(circle at 88% 7%,rgba(125,168,255,.14),transparent 28rem),
+      radial-gradient(circle at 10% 30%,rgba(185,255,102,.07),transparent 28rem),var(--bg);
+      font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",
+      "PingFang SC","Microsoft YaHei",sans-serif;line-height:1.65;transition:.25s}
+    body:before{content:"";position:fixed;inset:0;z-index:-1;opacity:.14;pointer-events:none;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.17'/%3E%3C/svg%3E")}
+    a{color:inherit;text-decoration:none} button{font:inherit}
+    ::selection{background:var(--accent);color:var(--accent-ink)}
+    .shell{width:var(--page);margin:auto}.block{padding:112px 0}
+    header{position:sticky;top:12px;z-index:30;width:var(--page);height:70px;margin:12px auto 0;padding:0 16px;
+      display:flex;align-items:center;justify-content:space-between;border:1px solid var(--line);
+      border-radius:18px;background:color-mix(in srgb,var(--bg) 76%,transparent);backdrop-filter:blur(18px)}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800}
+    .mark{width:40px;height:40px;display:grid;place-items:center;border-radius:12px;background:var(--accent);
+      color:var(--accent-ink);font-size:.82rem}
+    nav{display:flex;align-items:center;gap:24px} nav a{color:var(--muted);font-size:.88rem;font-weight:700}
+    nav a:hover{color:var(--text)} .theme{width:39px;height:39px;border:1px solid var(--line);
+      border-radius:12px;background:transparent;color:var(--text);cursor:pointer}
+    .menu{display:none;border:0;background:transparent;color:var(--text);font-size:1.35rem;cursor:pointer}
+    .hero{min-height:calc(100vh - 94px);padding:74px 0;display:grid;
+      grid-template-columns:minmax(0,1.18fr) minmax(350px,.82fr);gap:70px;align-items:center}
+    .eyebrow{margin:0 0 17px;color:var(--accent);font-size:.76rem;font-weight:850;
+      letter-spacing:.16em;text-transform:uppercase}
+    h1,h2{margin:0;letter-spacing:-.055em;line-height:1.03}
+    h1{font-size:clamp(3.3rem,6.7vw,6.7rem);font-weight:740}
+    h1 span{display:block;color:var(--muted)}
+    .intro{max-width:700px;margin:28px 0 0;color:var(--muted);font-size:clamp(1rem,1.3vw,1.2rem)}
+    .actions{margin-top:36px;display:flex;flex-wrap:wrap;gap:13px}
+    .btn{min-height:50px;padding:0 22px;display:inline-flex;align-items:center;justify-content:center;
+      border-radius:14px;font-size:.9rem;font-weight:800;transition:.2s}
+    .btn:hover{transform:translateY(-2px)}.primary{background:var(--accent);color:var(--accent-ink)}
+    .secondary{border:1px solid var(--line);background:var(--card)}
+    .meta{margin-top:58px;padding-top:22px;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
+    .meta strong,.meta span{display:block}.meta span{margin-top:3px;color:var(--muted);font-size:.75rem}
+    .visual{position:relative}.portrait{min-height:550px;position:relative;overflow:hidden;padding:28px;
+      display:flex;flex-direction:column;justify-content:space-between;border:1px solid var(--line);
+      border-radius:30px;background:linear-gradient(160deg,rgba(125,168,255,.22),transparent 40%),
+      linear-gradient(340deg,rgba(185,255,102,.17),transparent 42%),var(--card);box-shadow:var(--shadow)}
+    .grid{position:absolute;inset:0;opacity:.24;background-image:linear-gradient(var(--line) 1px,transparent 1px),
+      linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:46px 46px;
+      mask-image:linear-gradient(to bottom,#000,transparent 78%)}
+    .initials{position:relative;margin:auto;font-size:clamp(6rem,13vw,10rem);font-weight:900;
+      letter-spacing:-.13em;line-height:1;text-shadow:0 16px 60px rgba(0,0,0,.25)}
+    .caption{position:relative;display:flex;justify-content:space-between;gap:20px;color:var(--muted);font-size:.75rem}
+    .caption span:last-child{max-width:190px;text-align:right}
+    .note{position:absolute;max-width:215px;padding:16px 17px;display:flex;gap:12px;border:1px solid var(--line);
+      border-radius:16px;background:var(--card);backdrop-filter:blur(14px);box-shadow:var(--shadow)}
+    .note b{color:var(--accent);font-size:.72rem}.note p{margin:0;font-size:.76rem;line-height:1.45}
+    .n1{top:42px;left:-48px}.n2{right:-28px;bottom:72px}
+    .heading{max-width:830px;margin-bottom:54px}.heading h2{font-size:clamp(2.35rem,4.2vw,4.55rem)}
+    .desc{max-width:690px;margin:22px 0 0;color:var(--muted)}
+    .about{display:grid;grid-template-columns:.92fr 1.08fr;gap:68px;align-items:start}
+    .copy{color:var(--muted);font-size:1.06rem}.copy p:first-child{margin-top:0}
+    .cap{border-top:1px solid var(--line)}.cap-row{padding:24px 0;display:grid;grid-template-columns:50px 1fr;
+      gap:18px;border-bottom:1px solid var(--line)}
+    .cap-row>span{color:var(--accent);font-size:.76rem;font-weight:850}
+    .cap-row h3{margin:0 0 6px;font-size:1.06rem}.cap-row p{margin:0;color:var(--muted);font-size:.89rem}
+    .band{background:var(--soft);border-block:1px solid var(--line)}
+    .timeline{border-top:1px solid var(--line)}.item{padding:37px 0;display:grid;grid-template-columns:170px 1fr;
+      gap:34px;border-bottom:1px solid var(--line)}
+    .date{color:var(--muted);font-size:.8rem;font-weight:800}.topline{display:flex;justify-content:space-between;gap:24px}
+    .topline h3{margin:0;font-size:1.34rem}.role{color:var(--accent);font-size:.82rem;font-weight:750;text-align:right}
+    .item p{max-width:790px;margin:13px 0 17px;color:var(--muted)}
+    .tags{margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px;list-style:none}
+    .tags li{padding:6px 10px;border:1px solid var(--line);border-radius:99px;color:var(--muted);
+      font-size:.7rem;font-weight:700}
+    .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:19px}
+    .card{min-height:375px;padding:27px;display:flex;flex-direction:column;border:1px solid var(--line);
+      border-radius:20px;background:var(--card);box-shadow:0 14px 48px rgba(0,0,0,.08);transition:.22s}
+    .card:hover{transform:translateY(-5px);border-color:color-mix(in srgb,var(--accent) 42%,var(--line))}
+    .card.featured{background:linear-gradient(140deg,rgba(185,255,102,.12),transparent 48%),var(--card)}
+    .idx{margin-left:auto;color:var(--muted);font-size:.75rem;font-weight:850}
+    .type{margin:25px 0 8px;color:var(--accent);font-size:.72rem;font-weight:850;letter-spacing:.13em;text-transform:uppercase}
+    .card h3{margin:0;font-size:1.65rem;line-height:1.15;letter-spacing:-.035em}
+    .card>p:not(.type){margin:17px 0 25px;color:var(--muted);font-size:.9rem}
+    .card-foot{margin-top:auto;display:flex;justify-content:space-between;gap:18px;align-items:end}
+    .soon{font-size:.78rem;font-weight:800}
+    .edu{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .edu-card{min-height:235px;padding:25px;border:1px solid var(--line);border-radius:20px;background:var(--card)}
+    .year{margin:0 0 43px;color:var(--accent);font-size:.76rem;font-weight:850}
+    .edu-card h3{margin:0;font-size:1.32rem}.edu-card p:not(.year){margin:7px 0 0;color:var(--muted);font-size:.87rem}
+    .edu-card .degree{color:var(--text)!important;font-weight:750}
+    .awards{margin-top:19px;padding:21px 23px;display:flex;flex-wrap:wrap;justify-content:space-between;
+      gap:14px 26px;border:1px solid var(--line);border-radius:18px;color:var(--muted);font-size:.8rem}
+    .skills{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;overflow:hidden;border:1px solid var(--line);
+      border-radius:20px;background:var(--line)}
+    .skill{min-height:185px;padding:29px;background:var(--bg)}.skill h3{margin:0 0 15px}.skill p{margin:0;color:var(--muted)}
+    .contact{padding:clamp(30px,5vw,68px);display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:end;
+      border:1px solid var(--line);border-radius:30px;background:
+      radial-gradient(circle at 88% 10%,rgba(125,168,255,.17),transparent 18rem),
+      linear-gradient(140deg,rgba(185,255,102,.11),transparent 44%),var(--card);box-shadow:var(--shadow)}
+    .contact h2{font-size:clamp(2.3rem,4.1vw,4.3rem)}
+    .contact-side{display:flex;flex-direction:column;align-items:flex-start;gap:14px}
+    .resume{color:var(--muted);font-size:.83rem;border-bottom:1px solid var(--line)}
+    .small{margin:0;color:var(--muted);font-size:.74rem}
+    footer{padding:28px 0 42px;display:flex;justify-content:space-between;gap:24px;color:var(--muted);font-size:.76rem}
+    .reveal{opacity:0;transform:translateY(21px);transition:opacity .7s,transform .7s}
+    .reveal.show{opacity:1;transform:none}
+    @media(max-width:980px){
+      :root{--page:min(100% - 28px,760px)}.hero{min-height:auto;grid-template-columns:1fr;gap:58px}
+      .visual{max-width:620px;width:100%;margin:auto}.about{grid-template-columns:1fr;gap:40px}
+      .edu{grid-template-columns:1fr}.contact{grid-template-columns:1fr}
+    }
+    @media(max-width:760px){
+      :root{--page:min(100% - 22px,620px)}.block{padding:82px 0}header{height:64px;margin-top:8px}
+      .brand-name{display:none}.menu{display:block}nav{display:none;position:fixed;top:80px;left:11px;right:11px;
+        padding:27px;flex-direction:column;align-items:flex-start;border:1px solid var(--line);
+        border-radius:20px;background:var(--soft);box-shadow:var(--shadow)}
+      nav.open{display:flex}nav a{width:100%;font-size:1rem}.hero{padding:54px 0}.meta{grid-template-columns:1fr;gap:17px}
+      .portrait{min-height:455px}.note{position:relative;inset:auto;max-width:none;margin-top:11px}
+      .item{grid-template-columns:1fr;gap:12px}.topline{flex-direction:column;gap:7px}.role{text-align:left}
+      .projects{grid-template-columns:1fr}.skills{grid-template-columns:1fr}.card-foot{align-items:flex-start;flex-direction:column}
+      footer{flex-direction:column;gap:4px}
+    }
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}.reveal{opacity:1;transform:none}}
+  </style>
+</head>
+<body>
+  <header>
+    <a class="brand" href="#top"><span class="mark">XW</span><span class="brand-name">Xueyi Wei</span></a>
+    <button class="menu" aria-label="Open navigation">☰</button>
+    <nav>
+      <a href="#about">About</a><a href="#experience">Experience</a><a href="#research">Research</a>
+      <a href="#education">Education</a><a href="#contact">Contact</a>
+      <button class="theme" aria-label="Toggle color theme">☼</button>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero shell">
+      <div class="reveal">
+        <p class="eyebrow">Finance × Artificial Intelligence × Hard Tech</p>
+        <h1>Investing in the technologies <span>shaping the next economy.</span></h1>
+        <p class="intro">I am Xueyi (Shelly) Wei, a finance student with an artificial intelligence background, focused on hard-tech investment, semiconductor research, AI infrastructure, and capital markets.</p>
+        <div class="actions">
+          <a class="btn primary" href="#research">View selected research</a>
+          <a class="btn secondary" href="mailto:2200015918@stu.pku.edu.cn">Get in touch</a>
+        </div>
+        <div class="meta">
+          <div><strong>PKU</strong><span>Finance + AI</span></div>
+          <div><strong>THU SEM</strong><span>M.S. Finance · 2026</span></div>
+          <div><strong>4</strong><span>Investment internships</span></div>
+        </div>
+      </div>
+      <div class="visual reveal">
+        <div class="portrait">
+          <div class="grid"></div><div class="initials">XW</div>
+          <div class="caption"><span>Based in Beijing</span><span>Investment, banking and hard-tech research</span></div>
+        </div>
+        <div class="note n1"><b>01</b><p>Semiconductors and advanced manufacturing</p></div>
+        <div class="note n2"><b>02</b><p>AI-enabled investment research workflows</p></div>
+      </div>
+    </section>
+
+    <section id="about" class="shell block">
+      <div class="heading reveal"><p class="eyebrow">About</p><h2>Connecting technical depth with investment judgment.</h2></div>
+      <div class="about">
+        <div class="copy reveal">
+          <p>My work sits at the intersection of technology, investment, and finance. I have conducted research across semiconductor equipment, advanced packaging, optoelectronic chips, AI data-center infrastructure, energy storage, and advanced manufacturing.</p>
+          <p>Across internships at Hillhouse, Tencent Investment, CICC Capital, and CSC Securities, I have developed experience in sector mapping, company analysis, financial modeling, investment memo drafting, management interviews, and deal execution.</p>
+          <p>I am especially interested in helping technology-driven companies move from primary-market innovation to public-market financing and sustainable commercial scale.</p>
+        </div>
+        <div class="cap reveal">
+          <div class="cap-row"><span>01</span><div><h3>Industry research</h3><p>Market sizing, value-chain mapping, competitive positioning and expert research.</p></div></div>
+          <div class="cap-row"><span>02</span><div><h3>Investment analysis</h3><p>Business-model assessment, financial modeling, valuation and investment memos.</p></div></div>
+          <div class="cap-row"><span>03</span><div><h3>AI workflows</h3><p>Python, coding agents and structured workflows for faster research and sourcing.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="band block">
+      <div class="shell">
+        <div class="heading reveal"><p class="eyebrow">Experience</p><h2>Selected investment and research experience.</h2></div>
+        <div class="timeline">
+          <article class="item reveal"><div class="date">2026 — Present</div><div>
+            <div class="topline"><h3>Hillhouse</h3><span class="role">Industrial &amp; Hard-tech Investment Intern</span></div>
+            <p>Conducted investment research and target mapping across semiconductor materials and equipment, advanced packaging, optoelectronics, AI infrastructure, world models, quantum technology, and frontier systems.</p>
+            <ul class="tags"><li>Semiconductors</li><li>Advanced packaging</li><li>AI infrastructure</li></ul>
+          </div></article>
+          <article class="item reveal"><div class="date">2025 — 2026</div><div>
+            <div class="topline"><h3>Tencent Investment</h3><span class="role">Hard-tech Investment Intern</span></div>
+            <p>Researched upstream AI infrastructure, including data-center power, energy storage and cooling. Supported a liquid-cooling investment project across market sizing, screening, memo drafting, modeling, management interviews and assessment.</p>
+            <ul class="tags"><li>AIDC</li><li>Liquid cooling</li><li>Deal execution</li></ul>
+          </div></article>
+          <article class="item reveal"><div class="date">2024</div><div>
+            <div class="topline"><h3>CICC Capital</h3><span class="role">Private Equity Intern · New Energy</span></div>
+            <p>Supported energy-storage investment analysis, including cost-reduction modeling, project economics, competitive research and investment committee materials.</p>
+            <ul class="tags"><li>Private equity</li><li>Energy storage</li><li>Financial modeling</li></ul>
+          </div></article>
+          <article class="item reveal"><div class="date">2024</div><div>
+            <div class="topline"><h3>CSC Securities</h3><span class="role">AI Industry Research Intern</span></div>
+            <p>Conducted public-market research on AI and the NVIDIA value chain, tracking industry developments, company fundamentals, valuation and market performance.</p>
+            <ul class="tags"><li>Equity research</li><li>AI industry</li><li>Public markets</li></ul>
+          </div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="research" class="shell block">
+      <div class="heading reveal"><p class="eyebrow">Selected research</p><h2>Research themes across hard tech and capital markets.</h2>
+        <p class="desc">The cards currently use placeholder links. Replace them with public reports, GitHub repositories, PDFs or Notion pages when ready.</p></div>
+      <div class="projects">
+        <article class="card featured reveal"><div class="idx">01</div><p class="type">Advanced Packaging</p><h3>CoWoS and TCB Equipment Landscape</h3>
+          <p>Mapping of thermal-compression bonding equipment, suppliers, process steps, capacity expansion, customer validation and competitive dynamics.</p>
+          <div class="card-foot"><ul class="tags"><li>TCB</li><li>CoWoS</li><li>HBM</li></ul><a class="soon" href="#">Coming soon ↗</a></div></article>
+        <article class="card reveal"><div class="idx">02</div><p class="type">AI Infrastructure</p><h3>Data-center Cooling and Power</h3>
+          <p>Research on liquid cooling, power systems, energy storage and infrastructure bottlenecks created by AI-compute growth.</p>
+          <div class="card-foot"><ul class="tags"><li>AIDC</li><li>Cooling</li><li>Power</li></ul><a class="soon" href="#">Coming soon ↗</a></div></article>
+        <article class="card reveal"><div class="idx">03</div><p class="type">Semiconductors</p><h3>Optoelectronic and Interface Chips</h3>
+          <p>Value-chain and company mapping across optical interconnects, SerDes, DSP, TIA, drivers and emerging co-packaged optics architectures.</p>
+          <div class="card-foot"><ul class="tags"><li>CPO</li><li>SerDes</li><li>Optics</li></ul><a class="soon" href="#">Coming soon ↗</a></div></article>
+        <article class="card reveal"><div class="idx">04</div><p class="type">Public Markets</p><h3>Non-tech A-share Investment Framework</h3>
+          <p>Cross-sector screening of consumer, healthcare, financial, agricultural, commodity, utility and transportation companies using industry-specific valuation methods.</p>
+          <div class="card-foot"><ul class="tags"><li>A-shares</li><li>Valuation</li><li>Sector research</li></ul><a class="soon" href="#">Coming soon ↗</a></div></article>
+      </div>
+    </section>
+
+    <section id="education" class="band block">
+      <div class="shell">
+        <div class="heading reveal"><p class="eyebrow">Education &amp; recognition</p><h2>Finance foundations, technical training and analytical rigor.</h2></div>
+        <div class="edu">
+          <article class="edu-card reveal"><p class="year">From Sep 2026</p><h3>Tsinghua University</h3><p class="degree">School of Economics and Management</p><p>M.S. in Finance · Incoming student</p></article>
+          <article class="edu-card reveal"><p class="year">2022 — 2026</p><h3>Peking University</h3><p class="degree">Guanghua School of Management</p><p>B.A. in Finance</p></article>
+          <article class="edu-card reveal"><p class="year">2024 — 2026</p><h3>Peking University</h3><p class="degree">Yuanpei College</p><p>Double degree in Artificial Intelligence</p></article>
+        </div>
+        <div class="awards reveal"><span>National Mathematics Competition · First Prize</span><span>HSBC Business Case Competition · National Top 8</span><span>PKU Scholarship &amp; Academic Honors</span></div>
+      </div>
+    </section>
+
+    <section class="shell block">
+      <div class="heading reveal"><p class="eyebrow">Toolbox</p><h2>From financial models to agent-enabled research.</h2></div>
+      <div class="skills">
+        <div class="skill reveal"><h3>Investment</h3><p>Industry research · Company analysis · Financial modeling · Valuation · Investment memos · Due diligence</p></div>
+        <div class="skill reveal"><h3>Technology</h3><p>Python · AI agents · CLI workflows · Structured data extraction · Research automation</p></div>
+        <div class="skill reveal"><h3>Platforms</h3><p>Wind · Bloomberg · Capital IQ · iFind · Excel · PowerPoint</p></div>
+        <div class="skill reveal"><h3>Languages</h3><p>Mandarin Chinese · English</p></div>
+      </div>
+    </section>
+
+    <section id="contact" class="shell block">
+      <div class="contact reveal">
+        <div><p class="eyebrow">Contact</p><h2>Let’s discuss technology, investment and capital markets.</h2></div>
+        <div class="contact-side">
+          <a class="btn primary" href="mailto:2200015918@stu.pku.edu.cn">2200015918@stu.pku.edu.cn</a>
+          <a class="resume" href="Xueyi-Wei-Resume.pdf">Résumé placeholder ↗</a>
+          <p class="small">Upload your résumé beside this file and name it <b>Xueyi-Wei-Resume.pdf</b>.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="shell"><span>© <span id="year"></span> Xueyi Wei. Built for GitHub Pages.</span><a href="#top">Back to top ↑</a></footer>
+
+  <script>
+    const root=document.documentElement,theme=document.querySelector(".theme"),menu=document.querySelector(".menu"),nav=document.querySelector("nav");
+    const saved=localStorage.getItem("theme");
+    if(saved)root.dataset.theme=saved;else if(matchMedia("(prefers-color-scheme:light)").matches)root.dataset.theme="light";
+    function icon(){theme.textContent=root.dataset.theme==="dark"?"☼":"◐"} icon();
+    theme.onclick=()=>{root.dataset.theme=root.dataset.theme==="dark"?"light":"dark";localStorage.setItem("theme",root.dataset.theme);icon()};
+    menu.onclick=()=>nav.classList.toggle("open");nav.querySelectorAll("a").forEach(a=>a.onclick=()=>nav.classList.remove("open"));
+    const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("show");obs.unobserve(e.target)}}),{threshold:.12});
+    document.querySelectorAll(".reveal").forEach(x=>obs.observe(x));document.querySelector("#year").textContent=new Date().getFullYear();
+  </script>
+</body>
+</html>
