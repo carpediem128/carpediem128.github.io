@@ -1,3 +1,21 @@
+# Homepage Demo — v6
+
+This version makes a small visual refinement to the cute page progress bar.
+
+## Change made
+- Removed the highlighted color effect on the small horizontal section marks.
+- The scroll widget now feels cleaner:
+  - the cat-head marker still moves with scroll progress
+  - the vertical progress fill still moves with the cat
+  - the small horizontal marks stay neutral
+
+This matches your request to either:
+1. make the horizontal lines match the cat position, or
+2. remove their highlighting
+
+This version uses the cleaner second approach.
+
+
 # Xueyi Wei Personal Homepage
 
 ## Upload to GitHub Pages
