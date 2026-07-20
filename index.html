@@ -3,169 +3,361 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Xueyi Wei — Finance, AI and hard-tech investment research.">
   <title>Xueyi Wei | Finance × AI × Hard Tech</title>
+  <meta name="description" content="Xueyi Wei — finance, AI, hard-tech investment research, and primary-market mapping.">
   <style>
-    :root{
-      --bg:#090d18;--soft:#101727;--card:rgba(18,26,43,.82);--text:#f4f6f8;
-      --muted:#9ca8ba;--line:rgba(255,255,255,.12);--accent:#b9ff66;
-      --accent-ink:#142005;--blue:#7da8ff;--shadow:0 24px 80px rgba(0,0,0,.28);
-      --page:min(1160px,calc(100% - 40px))
+    :root {
+      --bg:#0a0f19; --soft:#101727; --card:rgba(18,25,39,.84); --card-strong:rgba(19,27,43,.95);
+      --text:#f4f2ed; --muted:#a5acb8; --line:rgba(255,255,255,.11); --accent:#d9b980; --accent-ink:#261c0f;
+      --finance:#81A9FF; --ai:#79D3AD; --shared:#DDD7CA; --page:min(1180px, calc(100% - 42px));
+      --shadow:0 26px 80px rgba(0,0,0,.34);
     }
-    html[data-theme="light"]{
-      --bg:#f3f2ee;--soft:#e8e7e1;--card:rgba(255,255,255,.84);--text:#111722;
-      --muted:#5f6976;--line:rgba(17,23,34,.13);--accent:#68a313;
-      --accent-ink:#fff;--blue:#345fd5;--shadow:0 24px 70px rgba(20,28,45,.11)
+    html[data-theme="light"] {
+      --bg:#f4f1eb; --soft:#e9e4dc; --card:rgba(255,255,255,.90); --card-strong:rgba(255,255,255,.98);
+      --text:#171b20; --muted:#6a727f; --line:rgba(17,21,32,.10); --accent:#a97a37; --accent-ink:#fff;
+      --shadow:0 26px 70px rgba(29,32,40,.10);
     }
-    *{box-sizing:border-box} html{scroll-behavior:smooth}
-    body{margin:0;min-width:320px;color:var(--text);background:
-      radial-gradient(circle at 88% 7%,rgba(125,168,255,.14),transparent 28rem),
-      radial-gradient(circle at 10% 30%,rgba(185,255,102,.07),transparent 28rem),var(--bg);
-      font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",
-      "PingFang SC","Microsoft YaHei",sans-serif;line-height:1.65;transition:.25s}
-    body:before{content:"";position:fixed;inset:0;z-index:-1;opacity:.14;pointer-events:none;
-      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.17'/%3E%3C/svg%3E")}
-    a{color:inherit;text-decoration:none} button{font:inherit}
-    ::selection{background:var(--accent);color:var(--accent-ink)}
-    .shell{width:var(--page);margin:auto}.block{padding:112px 0}
-    header{position:sticky;top:12px;z-index:30;width:var(--page);height:70px;margin:12px auto 0;padding:0 16px;
-      display:flex;align-items:center;justify-content:space-between;border:1px solid var(--line);
-      border-radius:18px;background:color-mix(in srgb,var(--bg) 76%,transparent);backdrop-filter:blur(18px)}
-    .brand{display:flex;align-items:center;gap:12px;font-weight:800}
-    .mark{width:40px;height:40px;display:grid;place-items:center;border-radius:12px;background:var(--accent);
-      color:var(--accent-ink);font-size:.82rem}
-    nav{display:flex;align-items:center;gap:24px} nav a{color:var(--muted);font-size:.88rem;font-weight:700}
-    nav a:hover{color:var(--text)} .theme{width:39px;height:39px;border:1px solid var(--line);
-      border-radius:12px;background:transparent;color:var(--text);cursor:pointer}
-    .menu{display:none;border:0;background:transparent;color:var(--text);font-size:1.35rem;cursor:pointer}
-    .hero{min-height:calc(100vh - 94px);padding:74px 0;display:grid;
-      grid-template-columns:minmax(0,1.18fr) minmax(350px,.82fr);gap:70px;align-items:center}
-    .eyebrow{margin:0 0 17px;color:var(--accent);font-size:.76rem;font-weight:850;
-      letter-spacing:.16em;text-transform:uppercase}
-    h1,h2{margin:0;letter-spacing:-.055em;line-height:1.03}
-    h1{font-size:clamp(3.3rem,6.7vw,6.7rem);font-weight:740}
-    h1 span{display:block;color:var(--muted)}
-    .intro{max-width:700px;margin:28px 0 0;color:var(--muted);font-size:clamp(1rem,1.3vw,1.2rem)}
-    .actions{margin-top:36px;display:flex;flex-wrap:wrap;gap:13px}
-    .btn{min-height:50px;padding:0 22px;display:inline-flex;align-items:center;justify-content:center;
-      border-radius:14px;font-size:.9rem;font-weight:800;transition:.2s}
-    .btn:hover{transform:translateY(-2px)}.primary{background:var(--accent);color:var(--accent-ink)}
-    .secondary{border:1px solid var(--line);background:var(--card)}
-    .meta{margin-top:58px;padding-top:22px;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
-    .meta strong,.meta span{display:block}.meta span{margin-top:3px;color:var(--muted);font-size:.75rem}
-    .visual{position:relative}.portrait{min-height:550px;position:relative;overflow:hidden;padding:28px;
-      display:flex;flex-direction:column;justify-content:space-between;border:1px solid var(--line);
-      border-radius:30px;background:linear-gradient(160deg,rgba(125,168,255,.22),transparent 40%),
-      linear-gradient(340deg,rgba(185,255,102,.17),transparent 42%),var(--card);box-shadow:var(--shadow)}
-    .grid{position:absolute;inset:0;opacity:.24;background-image:linear-gradient(var(--line) 1px,transparent 1px),
-      linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:46px 46px;
-      mask-image:linear-gradient(to bottom,#000,transparent 78%)}
-    .initials{position:relative;margin:auto;font-size:clamp(6rem,13vw,10rem);font-weight:900;
-      letter-spacing:-.13em;line-height:1;text-shadow:0 16px 60px rgba(0,0,0,.25)}
-    .caption{position:relative;display:flex;justify-content:space-between;gap:20px;color:var(--muted);font-size:.75rem}
-    .caption span:last-child{max-width:190px;text-align:right}
-    .note{position:absolute;max-width:215px;padding:16px 17px;display:flex;gap:12px;border:1px solid var(--line);
-      border-radius:16px;background:var(--card);backdrop-filter:blur(14px);box-shadow:var(--shadow)}
-    .note b{color:var(--accent);font-size:.72rem}.note p{margin:0;font-size:.76rem;line-height:1.45}
-    .n1{top:42px;left:-48px}.n2{right:-28px;bottom:72px}
-    .heading{max-width:830px;margin-bottom:54px}.heading h2{font-size:clamp(2.35rem,4.2vw,4.55rem)}
-    .desc{max-width:690px;margin:22px 0 0;color:var(--muted)}
-    .about{display:grid;grid-template-columns:.92fr 1.08fr;gap:68px;align-items:start}
-    .copy{color:var(--muted);font-size:1.06rem}.copy p:first-child{margin-top:0}
-    .cap{border-top:1px solid var(--line)}.cap-row{padding:24px 0;display:grid;grid-template-columns:50px 1fr;
-      gap:18px;border-bottom:1px solid var(--line)}
-    .cap-row>span{color:var(--accent);font-size:.76rem;font-weight:850}
-    .cap-row h3{margin:0 0 6px;font-size:1.06rem}.cap-row p{margin:0;color:var(--muted);font-size:.89rem}
-    .band{background:var(--soft);border-block:1px solid var(--line)}
-    .timeline{border-top:1px solid var(--line)}.item{padding:37px 0;display:grid;grid-template-columns:170px 1fr;
-      gap:34px;border-bottom:1px solid var(--line)}
-    .date{color:var(--muted);font-size:.8rem;font-weight:800}.topline{display:flex;justify-content:space-between;gap:24px}
-    .topline h3{margin:0;font-size:1.34rem}.role{color:var(--accent);font-size:.82rem;font-weight:750;text-align:right}
-    .item p{max-width:790px;margin:13px 0 17px;color:var(--muted)}
-    .tags{margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px;list-style:none}
-    .tags li{padding:6px 10px;border:1px solid var(--line);border-radius:99px;color:var(--muted);
-      font-size:.7rem;font-weight:700}
-    .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:19px}
-    .card{min-height:375px;padding:27px;display:flex;flex-direction:column;border:1px solid var(--line);
-      border-radius:20px;background:var(--card);box-shadow:0 14px 48px rgba(0,0,0,.08);transition:.22s}
-    .card:hover{transform:translateY(-5px);border-color:color-mix(in srgb,var(--accent) 42%,var(--line))}
-    .card.featured{background:linear-gradient(140deg,rgba(185,255,102,.12),transparent 48%),var(--card)}
-    .idx{margin-left:auto;color:var(--muted);font-size:.75rem;font-weight:850}
-    .type{margin:25px 0 8px;color:var(--accent);font-size:.72rem;font-weight:850;letter-spacing:.13em;text-transform:uppercase}
-    .card h3{margin:0;font-size:1.65rem;line-height:1.15;letter-spacing:-.035em}
-    .card>p:not(.type){margin:17px 0 25px;color:var(--muted);font-size:.9rem}
-    .card-foot{margin-top:auto;display:flex;justify-content:space-between;gap:18px;align-items:end}
-    .soon{font-size:.78rem;font-weight:800}
-    .edu{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .edu-card{min-height:235px;padding:25px;border:1px solid var(--line);border-radius:20px;background:var(--card)}
-    .year{margin:0 0 43px;color:var(--accent);font-size:.76rem;font-weight:850}
-    .edu-card h3{margin:0;font-size:1.32rem}.edu-card p:not(.year){margin:7px 0 0;color:var(--muted);font-size:.87rem}
-    .edu-card .degree{color:var(--text)!important;font-weight:750}
-    .awards{margin-top:19px;padding:21px 23px;display:flex;flex-wrap:wrap;justify-content:space-between;
-      gap:14px 26px;border:1px solid var(--line);border-radius:18px;color:var(--muted);font-size:.8rem}
-    .skills{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;overflow:hidden;border:1px solid var(--line);
-      border-radius:20px;background:var(--line)}
-    .skill{min-height:185px;padding:29px;background:var(--bg)}.skill h3{margin:0 0 15px}.skill p{margin:0;color:var(--muted)}
-    .contact{padding:clamp(30px,5vw,68px);display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:end;
-      border:1px solid var(--line);border-radius:30px;background:
-      radial-gradient(circle at 88% 10%,rgba(125,168,255,.17),transparent 18rem),
-      linear-gradient(140deg,rgba(185,255,102,.11),transparent 44%),var(--card);box-shadow:var(--shadow)}
-    .contact h2{font-size:clamp(2.3rem,4.1vw,4.3rem)}
-    .contact-side{display:flex;flex-direction:column;align-items:flex-start;gap:14px}
-    .resume{color:var(--muted);font-size:.83rem;border-bottom:1px solid var(--line)}
-    .small{margin:0;color:var(--muted);font-size:.74rem}
-    footer{padding:28px 0 42px;display:flex;justify-content:space-between;gap:24px;color:var(--muted);font-size:.76rem}
-    .reveal{opacity:0;transform:translateY(21px);transition:opacity .7s,transform .7s}
-    .reveal.show{opacity:1;transform:none}
-    @media(max-width:980px){
-      :root{--page:min(100% - 28px,760px)}.hero{min-height:auto;grid-template-columns:1fr;gap:58px}
-      .visual{max-width:620px;width:100%;margin:auto}.about{grid-template-columns:1fr;gap:40px}
-      .edu{grid-template-columns:1fr}.contact{grid-template-columns:1fr}
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {
+      margin:0; min-width:320px; color:var(--text);
+      background:
+        radial-gradient(circle at 85% 7%, rgba(129,169,255,.16), transparent 30rem),
+        radial-gradient(circle at 12% 28%, rgba(121,211,173,.10), transparent 28rem),
+        radial-gradient(circle at 48% 0%, rgba(217,185,128,.08), transparent 24rem),
+        var(--bg);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height:1.65; transition:background .25s ease, color .25s ease;
     }
-    @media(max-width:760px){
-      :root{--page:min(100% - 22px,620px)}.block{padding:82px 0}header{height:64px;margin-top:8px}
-      .brand-name{display:none}.menu{display:block}nav{display:none;position:fixed;top:80px;left:11px;right:11px;
-        padding:27px;flex-direction:column;align-items:flex-start;border:1px solid var(--line);
-        border-radius:20px;background:var(--soft);box-shadow:var(--shadow)}
-      nav.open{display:flex}nav a{width:100%;font-size:1rem}.hero{padding:54px 0}.meta{grid-template-columns:1fr;gap:17px}
-      .portrait{min-height:455px}.note{position:relative;inset:auto;max-width:none;margin-top:11px}
-      .item{grid-template-columns:1fr;gap:12px}.topline{flex-direction:column;gap:7px}.role{text-align:left}
-      .projects{grid-template-columns:1fr}.skills{grid-template-columns:1fr}.card-foot{align-items:flex-start;flex-direction:column}
-      footer{flex-direction:column;gap:4px}
+    body::before {
+      content:""; position:fixed; inset:0; z-index:-1; opacity:.14; pointer-events:none;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.16'/%3E%3C/svg%3E");
     }
-    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}.reveal{opacity:1;transform:none}}
+    a { color:inherit; text-decoration:none; } button { font:inherit; }
+    .shell { width:var(--page); margin:auto; } .block { padding:112px 0; }
+    ::selection { background:var(--accent); color:var(--accent-ink); }
+
+    .scroll-widget {
+      position:fixed; right:20px; top:50%; transform:translateY(-50%);
+      width:66px; z-index:60; display:flex; align-items:center; justify-content:center;
+    }
+    .scroll-shell {
+      position:relative; width:66px; min-height:280px; padding:18px 0; border-radius:999px;
+      background:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.04));
+      border:1px solid rgba(255,255,255,.10); backdrop-filter:blur(18px); box-shadow:var(--shadow);
+    }
+    .scroll-track {
+      position:relative; width:6px; height:220px; margin:0 auto; border-radius:999px;
+      background:rgba(255,255,255,.10); overflow:visible;
+    }
+    .scroll-fill {
+      position:absolute; left:0; bottom:0; width:100%; height:0%;
+      border-radius:999px; background:linear-gradient(180deg, #efd3a4, #8dd8b2);
+    }
+    .scroll-cat {
+      position:absolute; left:50%; bottom:0; transform:translate(-50%, 50%);
+      width:34px; height:34px; display:grid; place-items:center; border-radius:50%;
+      background:linear-gradient(180deg, #fff7ec, #f3d6a7); box-shadow:0 8px 20px rgba(0,0,0,.22); font-size:19px;
+    }
+    .scroll-marks {
+      position:absolute; top:26px; left:50%; transform:translateX(-50%);
+      width:40px; display:flex; flex-direction:column; gap:19px; align-items:center;
+    }
+    .scroll-mark {
+      width:24px; height:4px; border-radius:999px; background:rgba(255,255,255,.22);
+      transition:background .2s ease, width .2s ease;
+    }
+    .scroll-mark.active { width:30px; background:var(--accent); }
+    @media (max-width:980px) {
+      .scroll-widget { right:10px; transform:translateY(-50%) scale(.92); transform-origin:right center; }
+    }
+    @media (max-width:760px) {
+      .scroll-widget { display:none; }
+    }
+
+    header {
+      position:sticky; top:12px; z-index:30; width:var(--page); height:72px; margin:12px auto 0; padding:0 18px;
+      display:flex; align-items:center; justify-content:space-between; border:1px solid var(--line);
+      border-radius:20px; background:color-mix(in srgb, var(--bg) 74%, transparent); backdrop-filter:blur(18px);
+      box-shadow:0 10px 35px rgba(0,0,0,.08);
+    }
+    .brand { display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:-.02em; }
+    .mark {
+      width:40px; height:40px; display:grid; place-items:center; border-radius:13px;
+      background:linear-gradient(180deg, #e7c78e, #b68745); color:#241A0D; font-size:.82rem;
+      box-shadow:0 8px 20px rgba(167,121,54,.35);
+    }
+    nav { display:flex; align-items:center; gap:24px; }
+    nav a { color:var(--muted); font-size:.9rem; font-weight:700; transition:color .2s ease; }
+    nav a:hover { color:var(--text); }
+    .theme {
+      width:40px; height:40px; border:1px solid var(--line); border-radius:12px; background:rgba(255,255,255,.05);
+      color:var(--text); cursor:pointer;
+    }
+    .menu { display:none; border:0; background:transparent; color:var(--text); font-size:1.35rem; cursor:pointer; }
+
+    .hero {
+      min-height:calc(100vh - 94px); padding:76px 0; display:grid;
+      grid-template-columns:minmax(0,1.18fr) minmax(350px,.82fr); gap:74px; align-items:center;
+    }
+    .eyebrow {
+      margin:0 0 17px; color:var(--accent); font-size:.76rem; font-weight:850;
+      letter-spacing:.16em; text-transform:uppercase;
+    }
+    h1,h2 { margin:0; letter-spacing:-.055em; line-height:1.03; }
+    h1 { font-size:clamp(3.3rem, 6.7vw, 6.9rem); font-weight:750; }
+    h1 span { display:block; color:var(--muted); }
+    .intro { max-width:720px; margin:28px 0 0; color:var(--muted); font-size:clamp(1rem,1.3vw,1.2rem); }
+    .actions { margin-top:36px; display:flex; flex-wrap:wrap; gap:13px; }
+    .btn {
+      min-height:52px; padding:0 22px; display:inline-flex; align-items:center; justify-content:center;
+      border-radius:14px; font-size:.92rem; font-weight:800; transition:.18s ease; transform:translateY(0);
+    }
+    .btn:hover { transform:translateY(-2px); }
+    .primary {
+      background:linear-gradient(180deg, #ecd1a0, #c19149); color:#241A0D; box-shadow:0 14px 26px rgba(167,121,54,.26);
+    }
+    .secondary { border:1px solid var(--line); background:rgba(255,255,255,.05); box-shadow:var(--shadow); }
+    .hero-tags { margin-top:22px; display:flex; flex-wrap:wrap; gap:10px; max-width:760px; }
+    .hero-tag {
+      padding:9px 14px; border-radius:999px; border:1px solid rgba(255,255,255,.12);
+      background:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.04));
+      color:var(--text); font-size:.82rem; font-weight:700; box-shadow:0 10px 22px rgba(0,0,0,.10);
+    }
+    .meta { margin-top:58px; padding-top:22px; display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--line); }
+    .meta strong,.meta span { display:block; }
+    .meta span { margin-top:3px; color:var(--muted); font-size:.76rem; }
+
+    .visual { position:relative; }
+    .portrait {
+      min-height:580px; position:relative; overflow:hidden; padding:30px; display:flex; flex-direction:column; justify-content:space-between;
+      border:1px solid var(--line); border-radius:34px;
+      background:
+        radial-gradient(circle at 30% 15%, rgba(255,255,255,.08), transparent 26rem),
+        radial-gradient(circle at 100% 100%, rgba(121,211,173,.12), transparent 24rem),
+        linear-gradient(180deg, rgba(26,37,60,.95), rgba(16,22,35,.92));
+      box-shadow:var(--shadow); transform:perspective(1200px) rotateY(-6deg) rotateX(2deg);
+    }
+    .grid {
+      position:absolute; inset:0; opacity:.22;
+      background-image:linear-gradient(var(--line) 1px,transparent 1px), linear-gradient(90deg,var(--line) 1px,transparent 1px);
+      background-size:48px 48px; mask-image:linear-gradient(to bottom, #000, transparent 78%);
+    }
+    .initials {
+      position:relative; margin:auto; font-size:clamp(6.2rem,13vw,10rem); font-weight:900;
+      letter-spacing:-.13em; line-height:1; text-shadow:0 16px 60px rgba(0,0,0,.24);
+    }
+    .caption { position:relative; display:flex; justify-content:space-between; gap:20px; color:var(--muted); font-size:.82rem; }
+    .caption span:last-child { max-width:210px; text-align:right; }
+    .note {
+      position:absolute; max-width:280px; padding:18px 18px; display:flex; gap:14px; border:1px solid rgba(255,255,255,.12);
+      border-radius:20px; box-shadow:0 18px 36px rgba(0,0,0,.18); backdrop-filter:blur(18px);
+    }
+    .note b { display:block; font-size:.78rem; font-weight:900; margin-top:2px; }
+    .note p { margin:0; font-size:1rem; font-weight:700; line-height:1.35; }
+    .n1 {
+      top:36px; left:-58px; background:linear-gradient(180deg, rgba(129,169,255,.34), rgba(129,169,255,.14)); color:#e7efff;
+    }
+    .n1 b { color:#bed1ff; }
+    .n2 {
+      right:-34px; bottom:92px; background:linear-gradient(180deg, rgba(121,211,173,.34), rgba(121,211,173,.14)); color:#e6fbf2;
+    }
+    .n2 b { color:#c7f1de; }
+
+    .heading { max-width:860px; margin-bottom:54px; }
+    .heading h2 { font-size:clamp(2.45rem,4.2vw,4.8rem); }
+    .desc { max-width:770px; margin:22px 0 0; color:var(--muted); font-size:1rem; }
+
+    .about { display:grid; grid-template-columns:.92fr 1.08fr; gap:68px; align-items:start; }
+    .copy { color:var(--muted); font-size:1.08rem; }
+    .copy p:first-child { margin-top:0; }
+    .cap { border-top:1px solid var(--line); }
+    .cap-row { padding:24px 0; display:grid; grid-template-columns:50px 1fr; gap:18px; border-bottom:1px solid var(--line); }
+    .cap-row > span { color:var(--accent); font-size:.76rem; font-weight:850; }
+    .cap-row h3 { margin:0 0 8px; font-size:1.12rem; }
+    .cap-row p { margin:0; color:var(--muted); font-size:.93rem; }
+
+    .band { background:rgba(255,255,255,.02); border-block:1px solid var(--line); }
+    .timeline { border-top:1px solid var(--line); }
+    .item { padding:37px 0; display:grid; grid-template-columns:170px 1fr; gap:34px; border-bottom:1px solid var(--line); }
+    .date { color:var(--muted); font-size:.82rem; font-weight:800; }
+    .topline { display:flex; justify-content:space-between; gap:24px; }
+    .topline h3 { margin:0; font-size:1.38rem; }
+    .role { color:var(--accent); font-size:.84rem; font-weight:750; text-align:right; }
+    .item p { max-width:790px; margin:13px 0 17px; color:var(--muted); font-size:.96rem; }
+    .tags { margin:0; padding:0; display:flex; flex-wrap:wrap; gap:8px; list-style:none; }
+    .tags li {
+      padding:6px 11px; border:1px solid var(--line); border-radius:999px; color:var(--muted);
+      font-size:.72rem; font-weight:700; background:rgba(255,255,255,.02);
+    }
+
+    .map-card {
+      padding:18px; border:1px solid var(--line); border-radius:30px; background:rgba(255,255,255,.04); box-shadow:var(--shadow);
+    }
+    .map-frame {
+      overflow:hidden; border-radius:24px; background:rgba(0,0,0,.10);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.04), inset 0 -18px 48px rgba(0,0,0,.18);
+    }
+    .map-frame svg { display:block; width:100%; height:auto; }
+    .legend { margin:18px 4px 4px; display:flex; flex-wrap:wrap; gap:18px; color:var(--muted); font-size:.88rem; font-weight:700; }
+    .legend span { display:inline-flex; align-items:center; gap:8px; }
+    .dot { width:12px; height:12px; border-radius:50%; display:inline-block; box-shadow:0 0 0 4px rgba(255,255,255,.04); }
+    .dot.fin { background:var(--finance); } .dot.ai { background:var(--ai); } .dot.shared { background:var(--shared); }
+
+    .projects { display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:20px; }
+    .card {
+      min-height:380px; padding:30px; display:flex; flex-direction:column; border:1px solid rgba(255,255,255,.10);
+      border-radius:26px; background:
+        radial-gradient(circle at 90% 8%, rgba(255,255,255,.06), transparent 14rem),
+        linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      box-shadow:var(--shadow); transition:.22s;
+    }
+    .card:hover { transform:translateY(-5px); border-color:rgba(217,185,128,.28); }
+    .card.featured {
+      background:
+        radial-gradient(circle at 12% 0%, rgba(217,185,128,.14), transparent 15rem),
+        radial-gradient(circle at 100% 100%, rgba(129,169,255,.10), transparent 16rem),
+        linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+    }
+    .idx { margin-left:auto; color:var(--muted); font-size:.84rem; font-weight:850; }
+    .type { margin:25px 0 10px; color:var(--accent); font-size:.76rem; font-weight:850; letter-spacing:.13em; text-transform:uppercase; }
+    .card h3 { margin:0; font-size:1.9rem; line-height:1.14; letter-spacing:-.04em; }
+    .card > p:not(.type) { margin:18px 0 28px; color:var(--muted); font-size:1rem; }
+    .card-foot { margin-top:auto; display:flex; justify-content:space-between; gap:18px; align-items:end; }
+    .soon { font-size:.82rem; font-weight:800; }
+
+    .edu { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    .edu-card {
+      min-height:235px; padding:26px; border:1px solid var(--line); border-radius:22px;
+      background:rgba(255,255,255,.04); box-shadow:var(--shadow);
+    }
+    .year { margin:0 0 43px; color:var(--accent); font-size:.78rem; font-weight:850; }
+    .edu-card h3 { margin:0; font-size:1.38rem; }
+    .edu-card p:not(.year) { margin:7px 0 0; color:var(--muted); font-size:.9rem; }
+    .edu-card .degree { color:var(--text)!important; font-weight:760; }
+    .awards {
+      margin-top:19px; padding:21px 23px; display:flex; flex-wrap:wrap; justify-content:space-between; gap:14px 26px;
+      border:1px solid var(--line); border-radius:20px; color:var(--muted); font-size:.82rem; background:rgba(255,255,255,.04);
+      box-shadow:var(--shadow);
+    }
+
+    .skills {
+      display:grid; grid-template-columns:repeat(2,1fr); gap:1px; overflow:hidden;
+      border:1px solid var(--line); border-radius:24px; background:var(--line); box-shadow:var(--shadow);
+    }
+    .skill { min-height:185px; padding:29px; background:color-mix(in srgb, var(--bg) 88%, transparent); }
+    .skill h3 { margin:0 0 15px; font-size:1.16rem; }
+    .skill p { margin:0; color:var(--muted); font-size:.96rem; }
+
+    .contact {
+      padding:clamp(30px,5vw,68px); display:grid; grid-template-columns:1.15fr .85fr; gap:60px; align-items:end;
+      border:1px solid var(--line); border-radius:32px;
+      background:
+        radial-gradient(circle at 88% 10%, rgba(129,169,255,.18), transparent 18rem),
+        radial-gradient(circle at 0% 0%, rgba(217,185,128,.11), transparent 16rem),
+        rgba(255,255,255,.04);
+      box-shadow:var(--shadow);
+    }
+    .contact h2 { font-size:clamp(2.3rem,4.1vw,4.3rem); }
+    .contact-side { display:flex; flex-direction:column; align-items:flex-start; gap:14px; }
+    .resume { color:var(--muted); font-size:.85rem; border-bottom:1px solid var(--line); }
+    .small { margin:0; color:var(--muted); font-size:.76rem; }
+    footer { padding:28px 0 42px; display:flex; justify-content:space-between; gap:24px; color:var(--muted); font-size:.78rem; }
+
+    .reveal { opacity:0; transform:translateY(21px); transition:opacity .7s, transform .7s; }
+    .reveal.show { opacity:1; transform:none; }
+
+    @media (max-width:980px) {
+      :root { --page:min(100% - 28px, 760px); }
+      .hero { min-height:auto; grid-template-columns:1fr; gap:58px; }
+      .visual { max-width:620px; width:100%; margin:auto; }
+      .about, .projects, .edu { grid-template-columns:1fr; gap:40px; }
+      .contact { grid-template-columns:1fr; }
+    }
+    @media (max-width:760px) {
+      :root { --page:min(100% - 22px, 620px); }
+      .block { padding:82px 0; }
+      header { height:64px; margin-top:8px; }
+      .brand-name { display:none; }
+      .menu { display:block; }
+      nav {
+        display:none; position:fixed; top:80px; left:11px; right:11px; padding:27px; flex-direction:column; align-items:flex-start;
+        border:1px solid var(--line); border-radius:20px; background:var(--soft); box-shadow:var(--shadow);
+      }
+      nav.open { display:flex; }
+      nav a { width:100%; font-size:1rem; }
+      .hero { padding:54px 0; }
+      .meta { grid-template-columns:1fr; gap:17px; }
+      .portrait { min-height:455px; transform:none; }
+      .note { position:relative; inset:auto; max-width:none; margin-top:12px; }
+      .item { grid-template-columns:1fr; gap:12px; }
+      .topline { flex-direction:column; gap:7px; }
+      .role { text-align:left; }
+      .skills { grid-template-columns:1fr; }
+      .card-foot { align-items:flex-start; flex-direction:column; }
+      footer { flex-direction:column; gap:4px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { scroll-behavior:auto!important; transition:none!important; }
+      .reveal { opacity:1; transform:none; }
+      .portrait { transform:none !important; }
+    }
   </style>
 </head>
 <body>
+  <div class="scroll-widget" aria-hidden="true">
+    <div class="scroll-shell">
+      <div class="scroll-marks">
+        <span class="scroll-mark"></span>
+        <span class="scroll-mark"></span>
+        <span class="scroll-mark"></span>
+        <span class="scroll-mark"></span>
+        <span class="scroll-mark"></span>
+        <span class="scroll-mark"></span>
+        <span class="scroll-mark"></span>
+      </div>
+      <div class="scroll-track">
+        <div class="scroll-fill" id="scrollFill"></div>
+        <div class="scroll-cat" id="scrollCat">🐱</div>
+      </div>
+    </div>
+  </div>
+
   <header>
     <a class="brand" href="#top"><span class="mark">XW</span><span class="brand-name">Xueyi Wei</span></a>
     <button class="menu" aria-label="Open navigation">☰</button>
     <nav>
-      <a href="#about">About</a><a href="#experience">Experience</a><a href="#research">Research</a>
-      <a href="#education">Education</a><a href="#contact">Contact</a>
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#courses">Courses</a>
+      <a href="#research">Projects</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
       <button class="theme" aria-label="Toggle color theme">☼</button>
     </nav>
   </header>
 
   <main id="top">
-    <section class="hero shell">
+    <section class="hero shell" data-section="top">
       <div class="reveal">
         <p class="eyebrow">Finance × Artificial Intelligence × Hard Tech</p>
         <h1>Investing in the technologies <span>shaping the next economy.</span></h1>
         <p class="intro">I am Xueyi (Shelly) Wei, a finance student with an artificial intelligence background, focused on hard-tech investment, semiconductor research, AI infrastructure, and capital markets.</p>
         <div class="actions">
-          <a class="btn primary" href="#research">View selected research</a>
-          <a class="btn secondary" href="mailto:2200015918@stu.pku.edu.cn">Get in touch</a>
+          <a class="btn primary" href="#research">View selected projects</a>
+          <a class="btn secondary" href="mailto:shellybrown128w@gmail.com">Get in touch</a>
         </div>
+        <div class="hero-tags"><span class="hero-tag">Semiconductors</span><span class="hero-tag">AI Infrastructure</span><span class="hero-tag">Target Mapping</span><span class="hero-tag">Optoelectronic Chips</span><span class="hero-tag">Advanced Manufacturing</span><span class="hero-tag">Data-center Cooling</span><span class="hero-tag">Energy Storage</span><span class="hero-tag">Financial Modeling</span><span class="hero-tag">Investment Research</span><span class="hero-tag">AI Agents</span></div>
         <div class="meta">
           <div><strong>PKU</strong><span>Finance + AI</span></div>
           <div><strong>THU SEM</strong><span>M.S. Finance · 2026</span></div>
-          <div><strong>4</strong><span>Investment internships</span></div>
+          <div><strong>Ongoing</strong><span>Primary-market mapping boards</span></div>
         </div>
       </div>
       <div class="visual reveal">
         <div class="portrait">
-          <div class="grid"></div><div class="initials">XW</div>
+          <div class="grid"></div>
+          <div class="initials">XW</div>
           <div class="caption"><span>Based in Beijing</span><span>Investment, banking and hard-tech research</span></div>
         </div>
         <div class="note n1"><b>01</b><p>Semiconductors and advanced manufacturing</p></div>
@@ -173,8 +365,11 @@
       </div>
     </section>
 
-    <section id="about" class="shell block">
-      <div class="heading reveal"><p class="eyebrow">About</p><h2>Connecting technical depth with investment judgment.</h2></div>
+    <section id="about" class="shell block" data-section="about">
+      <div class="heading reveal">
+        <p class="eyebrow">About</p>
+        <h2>Connecting technical depth with investment judgment.</h2>
+      </div>
       <div class="about">
         <div class="copy reveal">
           <p>My work sits at the intersection of technology, investment, and finance. I have conducted research across semiconductor equipment, advanced packaging, optoelectronic chips, AI data-center infrastructure, energy storage, and advanced manufacturing.</p>
@@ -184,19 +379,22 @@
         <div class="cap reveal">
           <div class="cap-row"><span>01</span><div><h3>Industry research</h3><p>Market sizing, value-chain mapping, competitive positioning and expert research.</p></div></div>
           <div class="cap-row"><span>02</span><div><h3>Investment analysis</h3><p>Business-model assessment, financial modeling, valuation and investment memos.</p></div></div>
-          <div class="cap-row"><span>03</span><div><h3>AI workflows</h3><p>Python, coding agents and structured workflows for faster research and sourcing.</p></div></div>
+          <div class="cap-row"><span>03</span><div><h3>AI workflows</h3><p>Python, coding agents and structured workflows for faster research, sourcing and mapping.</p></div></div>
         </div>
       </div>
     </section>
 
-    <section id="experience" class="band block">
+    <section id="experience" class="band block" data-section="experience">
       <div class="shell">
-        <div class="heading reveal"><p class="eyebrow">Experience</p><h2>Selected investment and research experience.</h2></div>
+        <div class="heading reveal">
+          <p class="eyebrow">Experience</p>
+          <h2>Selected investment and research experience.</h2>
+        </div>
         <div class="timeline">
           <article class="item reveal"><div class="date">2026 — Present</div><div>
             <div class="topline"><h3>Hillhouse</h3><span class="role">Industrial &amp; Hard-tech Investment Intern</span></div>
-            <p>Conducted investment research and target mapping across semiconductor materials and equipment, advanced packaging, optoelectronics, AI infrastructure, world models, quantum technology, and frontier systems.</p>
-            <ul class="tags"><li>Semiconductors</li><li>Advanced packaging</li><li>AI infrastructure</li></ul>
+            <p>Conducted investment research and target mapping across semiconductor materials and equipment, advanced packaging, optoelectronics, AI infrastructure, world models, quantum technology and frontier systems.</p>
+            <ul class="tags"><li>Semiconductors</li><li>AI infrastructure</li><li>Target mapping</li></ul>
           </div></article>
           <article class="item reveal"><div class="date">2025 — 2026</div><div>
             <div class="topline"><h3>Tencent Investment</h3><span class="role">Hard-tech Investment Intern</span></div>
@@ -217,30 +415,74 @@
       </div>
     </section>
 
-    <section id="research" class="shell block">
-      <div class="heading reveal"><p class="eyebrow">Selected research</p><h2>Research themes across hard tech and capital markets.</h2>
-        <p class="desc">The cards currently use placeholder links. Replace them with public reports, GitHub repositories, PDFs or Notion pages when ready.</p></div>
-      <div class="projects">
-        <article class="card featured reveal"><div class="idx">01</div><p class="type">Advanced Packaging</p><h3>CoWoS and TCB Equipment Landscape</h3>
-          <p>Mapping of thermal-compression bonding equipment, suppliers, process steps, capacity expansion, customer validation and competitive dynamics.</p>
-          <div class="card-foot"><ul class="tags"><li>TCB</li><li>CoWoS</li><li>HBM</li></ul><a class="soon" href="#">Coming soon ↗</a></div></article>
-        <article class="card reveal"><div class="idx">02</div><p class="type">AI Infrastructure</p><h3>Data-center Cooling and Power</h3>
-          <p>Research on liquid cooling, power systems, energy storage and infrastructure bottlenecks created by AI-compute growth.</p>
-          <div class="card-foot"><ul class="tags"><li>AIDC</li><li>Cooling</li><li>Power</li></ul><a class="soon" href="#">Coming soon ↗</a></div></article>
-        <article class="card reveal"><div class="idx">03</div><p class="type">Semiconductors</p><h3>Optoelectronic and Interface Chips</h3>
-          <p>Value-chain and company mapping across optical interconnects, SerDes, DSP, TIA, drivers and emerging co-packaged optics architectures.</p>
-          <div class="card-foot"><ul class="tags"><li>CPO</li><li>SerDes</li><li>Optics</li></ul><a class="soon" href="#">Coming soon ↗</a></div></article>
-        <article class="card reveal"><div class="idx">04</div><p class="type">Public Markets</p><h3>Non-tech A-share Investment Framework</h3>
-          <p>Cross-sector screening of consumer, healthcare, financial, agricultural, commodity, utility and transportation companies using industry-specific valuation methods.</p>
-          <div class="card-foot"><ul class="tags"><li>A-shares</li><li>Valuation</li><li>Sector research</li></ul><a class="soon" href="#">Coming soon ↗</a></div></article>
+    <section id="courses" class="shell block" data-section="courses">
+      <div class="heading reveal">
+        <p class="eyebrow">Academic map</p>
+        <h2>A cleaner course network across finance and AI.</h2>
+        <p class="desc">This map summarizes the relationships between your finance-major and AI double-major coursework through shared quantitative foundations, methods, and applied modules.</p>
+      </div>
+      <div class="map-card reveal">
+        <div class="map-frame"><svg viewBox="0 0 1140 740" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Course relationship map">
+<defs>
+  <linearGradient id="mapbg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#10172a"/>
+    <stop offset="100%" stop-color="#152037"/>
+  </linearGradient>
+  <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+    <feDropShadow dx="0" dy="12" stdDeviation="14" flood-color="rgba(0,0,0,0.34)"/>
+  </filter>
+</defs>
+<rect x="18" y="16" width="1104" height="708" rx="34" fill="url(#mapbg)" stroke="rgba(255,255,255,0.09)"/>
+<rect x="42" y="52" width="348" height="652" rx="30" fill="rgba(129,169,255,0.08)" stroke="rgba(129,169,255,0.22)"/>
+<rect x="396" y="52" width="348" height="652" rx="30" fill="rgba(221,215,202,0.08)" stroke="rgba(221,215,202,0.18)"/>
+<rect x="750" y="52" width="348" height="652" rx="30" fill="rgba(121,211,173,0.08)" stroke="rgba(121,211,173,0.22)"/>
+<text x="68" y="92" fill="#dbe6ff" font-size="23" font-weight="700">Finance Major</text>
+<text x="450" y="92" fill="#f1ede5" font-size="23" font-weight="700">Shared Foundations &amp; Methods</text>
+<text x="782" y="92" fill="#dff7ec" font-size="23" font-weight="700">AI Double Major</text>
+<path d="M 126.0 139.0 C 187.5 139.0, 187.5 95.0, 249.0 95.0" stroke="rgba(255,255,255,0.14)" stroke-width="2" fill="none"/><path d="M 126.0 139.0 C 197.5 139.0, 197.5 191.0, 269.0 191.0" stroke="rgba(255,255,255,0.14)" stroke-width="2" fill="none"/><path d="M 249.0 95.0 C 190.0 95.0, 190.0 251.0, 131.0 251.0" stroke="rgba(255,255,255,0.14)" stroke-width="2" fill="none"/><path d="M 131.0 251.0 C 213.5 251.0, 213.5 299.0, 296.0 299.0" stroke="rgba(255,255,255,0.14)" stroke-width="2" fill="none"/><path d="M 296.0 299.0 C 245.0 299.0, 245.0 369.0, 194.0 369.0" stroke="rgba(255,255,255,0.14)" stroke-width="2" fill="none"/><path d="M 194.0 369.0 C 152.0 369.0, 152.0 443.0, 110.0 443.0" stroke="rgba(255,255,255,0.14)" stroke-width="2" fill="none"/><path d="M 194.0 369.0 C 233.0 369.0, 233.0 611.0, 272.0 611.0" stroke="rgba(255,255,255,0.14)" stroke-width="2" fill="none"/><path d="M 110.0 443.0 C 120.0 443.0, 120.0 611.0, 130.0 611.0" stroke="rgba(255,255,255,0.14)" stroke-width="2" fill="none"/><path d="M 264.0 443.0 C 199.5 443.0, 199.5 661.0, 135.0 661.0" stroke="rgba(255,255,255,0.14)" stroke-width="2" fill="none"/><path d="M 264.0 443.0 C 278.5 443.0, 278.5 665.0, 293.0 665.0" stroke="rgba(255,255,255,0.14)" stroke-width="2" fill="none"/><path d="M 123.0 529.0 C 190.5 529.0, 190.5 529.0, 258.0 529.0" stroke="rgba(255,255,255,0.14)" stroke-width="2" fill="none"/><path d="M 493.0 139.0 C 309.5 139.0, 309.5 139.0, 126.0 139.0" stroke="rgba(255,255,255,0.14)" stroke-width="2" fill="none"/><path d="M 493.0 139.0 C 651.5 139.0, 651.5 207.0, 810.0 207.0" stroke="rgba(255,255,255,0.14)" stroke-width="2" fill="none"/><path d="M 641.0 139.0 C 725.5 139.0, 725.5 207.0, 810.0 207.0" stroke="rgba(255,255,255,0.14)" stroke-width="2" fill="none"/><path d="M 641.0 139.0 C 567.5 139.0, 567.5 489.0, 494.0 489.0" stroke="rgba(255,255,255,0.14)" stroke-width="2" fill="none"/><path d="M 567.0 245.0 C 415.5 245.0, 415.5 443.0, 264.0 443.0" stroke="rgba(255,255,255,0.14)" stroke-width="2" fill="none"/><path d="M 567.0 245.0 C 688.5 245.0, 688.5 207.0, 810.0 207.0" stroke="rgba(255,255,255,0.14)" stroke-width="2" fill="none"/><path d="M 474.0 355.0 C 642.0 355.0, 642.0 207.0, 810.0 207.0" stroke="rgba(255,255,255,0.14)" stroke-width="2" fill="none"/><path d="M 474.0 355.0 C 655.5 355.0, 655.5 121.0, 837.0 121.0" stroke="rgba(255,255,255,0.14)" stroke-width="2" fill="none"/><path d="M 611.0 355.0 C 437.5 355.0, 437.5 443.0, 264.0 443.0" stroke="rgba(255,255,255,0.14)" stroke-width="2" fill="none"/><path d="M 611.0 355.0 C 373.0 355.0, 373.0 661.0, 135.0 661.0" stroke="rgba(255,255,255,0.14)" stroke-width="2" fill="none"/><path d="M 494.0 489.0 C 383.0 489.0, 383.0 611.0, 272.0 611.0" stroke="rgba(255,255,255,0.14)" stroke-width="2" fill="none"/><path d="M 633.0 489.0 C 448.5 489.0, 448.5 443.0, 264.0 443.0" stroke="rgba(255,255,255,0.14)" stroke-width="2" fill="none"/><path d="M 633.0 489.0 C 733.5 489.0, 733.5 519.0, 834.0 519.0" stroke="rgba(255,255,255,0.14)" stroke-width="2" fill="none"/><path d="M 837.0 121.0 C 908.5 121.0, 908.5 121.0, 980.0 121.0" stroke="rgba(255,255,255,0.14)" stroke-width="2" fill="none"/><path d="M 980.0 121.0 C 895.0 121.0, 895.0 207.0, 810.0 207.0" stroke="rgba(255,255,255,0.14)" stroke-width="2" fill="none"/><path d="M 810.0 207.0 C 893.5 207.0, 893.5 209.0, 977.0 209.0" stroke="rgba(255,255,255,0.14)" stroke-width="2" fill="none"/><path d="M 810.0 207.0 C 818.0 207.0, 818.0 309.0, 826.0 309.0" stroke="rgba(255,255,255,0.14)" stroke-width="2" fill="none"/><path d="M 826.0 309.0 C 906.0 309.0, 906.0 309.0, 986.0 309.0" stroke="rgba(255,255,255,0.14)" stroke-width="2" fill="none"/><path d="M 810.0 207.0 C 821.5 207.0, 821.5 411.0, 833.0 411.0" stroke="rgba(255,255,255,0.14)" stroke-width="2" fill="none"/><path d="M 810.0 207.0 C 891.0 207.0, 891.0 411.0, 972.0 411.0" stroke="rgba(255,255,255,0.14)" stroke-width="2" fill="none"/><path d="M 986.0 309.0 C 910.0 309.0, 910.0 519.0, 834.0 519.0" stroke="rgba(255,255,255,0.14)" stroke-width="2" fill="none"/><path d="M 986.0 309.0 C 986.5 309.0, 986.5 519.0, 987.0 519.0" stroke="rgba(255,255,255,0.14)" stroke-width="2" fill="none"/><path d="M 824.0 629.0 C 896.0 629.0, 896.0 629.0, 968.0 629.0" stroke="rgba(255,255,255,0.14)" stroke-width="2" fill="none"/><path d="M 968.0 629.0 C 901.0 629.0, 901.0 519.0, 834.0 519.0" stroke="rgba(255,255,255,0.14)" stroke-width="2" fill="none"/><path d="M 824.0 629.0 C 817.0 629.0, 817.0 207.0, 810.0 207.0" stroke="rgba(255,255,255,0.14)" stroke-width="2" fill="none"/><path d="M 830.0 681.0 C 905.0 681.0, 905.0 121.0, 980.0 121.0" stroke="rgba(255,255,255,0.14)" stroke-width="2" fill="none"/><path d="M 979.0 681.0 C 982.5 681.0, 982.5 309.0, 986.0 309.0" stroke="rgba(255,255,255,0.14)" stroke-width="2" fill="none"/><rect x="80" y="124" width="92" height="38" rx="17" fill="rgba(0,0,0,0.28)"/><rect x="80" y="120" width="92" height="38" rx="17" fill="#81A9FF" stroke="rgba(255,255,255,0.15)" filter="url(#softShadow)"/><text x="126.0" y="143.0" text-anchor="middle" fill="#102044" font-size="13" font-weight="800">经济学</text><rect x="195" y="80" width="108" height="38" rx="17" fill="rgba(0,0,0,0.28)"/><rect x="195" y="76" width="108" height="38" rx="17" fill="#81A9FF" stroke="rgba(255,255,255,0.15)" filter="url(#softShadow)"/><text x="249.0" y="99.0" text-anchor="middle" fill="#102044" font-size="13" font-weight="800">微观经济学</text><rect x="215" y="176" width="108" height="38" rx="17" fill="rgba(0,0,0,0.28)"/><rect x="215" y="172" width="108" height="38" rx="17" fill="#81A9FF" stroke="rgba(255,255,255,0.15)" filter="url(#softShadow)"/><text x="269.0" y="195.0" text-anchor="middle" fill="#102044" font-size="13" font-weight="800">宏观经济学</text><rect x="92" y="236" width="78" height="38" rx="17" fill="rgba(0,0,0,0.28)"/><rect x="92" y="232" width="78" height="38" rx="17" fill="#81A9FF" stroke="rgba(255,255,255,0.15)" filter="url(#softShadow)"/><text x="131.0" y="255.0" text-anchor="middle" fill="#102044" font-size="13" font-weight="800">会计学</text><rect x="232" y="284" width="128" height="38" rx="17" fill="rgba(0,0,0,0.28)"/><rect x="232" y="280" width="128" height="38" rx="17" fill="#81A9FF" stroke="rgba(255,255,255,0.15)" filter="url(#softShadow)"/><text x="296.0" y="303.0" text-anchor="middle" fill="#102044" font-size="13" font-weight="800">公司财务管理</text><rect x="112" y="354" width="164" height="38" rx="17" fill="rgba(0,0,0,0.28)"/><rect x="112" y="350" width="164" height="38" rx="17" fill="#81A9FF" stroke="rgba(255,255,255,0.15)" filter="url(#softShadow)"/><text x="194.0" y="373.0" text-anchor="middle" fill="#102044" font-size="13" font-weight="800">金融市场与金融机构</text><rect x="62" y="428" width="96" height="38" rx="17" fill="rgba(0,0,0,0.28)"/><rect x="62" y="424" width="96" height="38" rx="17" fill="#81A9FF" stroke="rgba(255,255,255,0.15)" filter="url(#softShadow)"/><text x="110.0" y="447.0" text-anchor="middle" fill="#102044" font-size="13" font-weight="800">证券投资学</text><rect x="214" y="428" width="100" height="38" rx="17" fill="rgba(0,0,0,0.28)"/><rect x="214" y="424" width="100" height="38" rx="17" fill="#81A9FF" stroke="rgba(255,255,255,0.15)" filter="url(#softShadow)"/><text x="264.0" y="447.0" text-anchor="middle" fill="#102044" font-size="13" font-weight="800">计量经济学</text><rect x="75" y="514" width="96" height="38" rx="17" fill="rgba(0,0,0,0.28)"/><rect x="75" y="510" width="96" height="38" rx="17" fill="#81A9FF" stroke="rgba(255,255,255,0.15)" filter="url(#softShadow)"/><text x="123.0" y="533.0" text-anchor="middle" fill="#102044" font-size="13" font-weight="800">组织与管理</text><rect x="212" y="514" width="92" height="38" rx="17" fill="rgba(0,0,0,0.28)"/><rect x="212" y="510" width="92" height="38" rx="17" fill="#81A9FF" stroke="rgba(255,255,255,0.15)" filter="url(#softShadow)"/><text x="258.0" y="533.0" text-anchor="middle" fill="#102044" font-size="13" font-weight="800">管理科学</text><rect x="72" y="596" width="116" height="38" rx="17" fill="rgba(0,0,0,0.28)"/><rect x="72" y="592" width="116" height="38" rx="17" fill="#81A9FF" stroke="rgba(255,255,255,0.15)" filter="url(#softShadow)"/><text x="130.0" y="615.0" text-anchor="middle" fill="#102044" font-size="13" font-weight="800">衍生品定价</text><rect x="214" y="596" width="116" height="38" rx="17" fill="rgba(0,0,0,0.28)"/><rect x="214" y="592" width="116" height="38" rx="17" fill="#81A9FF" stroke="rgba(255,255,255,0.15)" filter="url(#softShadow)"/><text x="272.0" y="615.0" text-anchor="middle" fill="#102044" font-size="13" font-weight="800">固定收益证券</text><rect x="72" y="646" width="126" height="38" rx="17" fill="rgba(0,0,0,0.28)"/><rect x="72" y="642" width="126" height="38" rx="17" fill="#81A9FF" stroke="rgba(255,255,255,0.15)" filter="url(#softShadow)"/><text x="135.0" y="665.0" text-anchor="middle" fill="#102044" font-size="13" font-weight="800">金融时间序列</text><rect x="210" y="650" width="166" height="38" rx="17" fill="rgba(0,0,0,0.28)"/><rect x="210" y="646" width="166" height="38" rx="17" fill="#81A9FF" stroke="rgba(255,255,255,0.15)" filter="url(#softShadow)"/><text x="293.0" y="669.0" text-anchor="middle" fill="#102044" font-size="13" font-weight="800">风险资本与创新融资</text><rect x="444" y="124" width="98" height="38" rx="17" fill="rgba(0,0,0,0.28)"/><rect x="444" y="120" width="98" height="38" rx="17" fill="#DDD7CA" stroke="rgba(255,255,255,0.15)" filter="url(#softShadow)"/><text x="493.0" y="143.0" text-anchor="middle" fill="#2F2D2A" font-size="13" font-weight="800">高等数学</text><rect x="592" y="124" width="98" height="38" rx="17" fill="rgba(0,0,0,0.28)"/><rect x="592" y="120" width="98" height="38" rx="17" fill="#DDD7CA" stroke="rgba(255,255,255,0.15)" filter="url(#softShadow)"/><text x="641.0" y="143.0" text-anchor="middle" fill="#2F2D2A" font-size="13" font-weight="800">线性代数</text><rect x="518" y="230" width="98" height="38" rx="17" fill="rgba(0,0,0,0.28)"/><rect x="518" y="226" width="98" height="38" rx="17" fill="#DDD7CA" stroke="rgba(255,255,255,0.15)" filter="url(#softShadow)"/><text x="567.0" y="249.0" text-anchor="middle" fill="#2F2D2A" font-size="13" font-weight="800">概率统计</text><rect x="430" y="340" width="88" height="38" rx="17" fill="rgba(0,0,0,0.28)"/><rect x="430" y="336" width="88" height="38" rx="17" fill="#DDD7CA" stroke="rgba(255,255,255,0.15)" filter="url(#softShadow)"/><text x="474.0" y="359.0" text-anchor="middle" fill="#2F2D2A" font-size="13" font-weight="800">Python</text><rect x="546" y="340" width="130" height="38" rx="17" fill="rgba(0,0,0,0.28)"/><rect x="546" y="336" width="130" height="38" rx="17" fill="#DDD7CA" stroke="rgba(255,255,255,0.15)" filter="url(#softShadow)"/><text x="611.0" y="359.0" text-anchor="middle" fill="#2F2D2A" font-size="13" font-weight="800">R语言与可视化</text><rect x="420" y="474" width="148" height="38" rx="17" fill="rgba(0,0,0,0.28)"/><rect x="420" y="470" width="148" height="38" rx="17" fill="#DDD7CA" stroke="rgba(255,255,255,0.15)" filter="url(#softShadow)"/><text x="494.0" y="493.0" text-anchor="middle" fill="#2F2D2A" font-size="13" font-weight="800">金融中的数学方法</text><rect x="586" y="474" width="94" height="38" rx="17" fill="rgba(0,0,0,0.28)"/><rect x="586" y="470" width="94" height="38" rx="17" fill="#DDD7CA" stroke="rgba(255,255,255,0.15)" filter="url(#softShadow)"/><text x="633.0" y="493.0" text-anchor="middle" fill="#2F2D2A" font-size="13" font-weight="800">因果推断</text><rect x="790" y="106" width="94" height="38" rx="17" fill="rgba(0,0,0,0.28)"/><rect x="790" y="102" width="94" height="38" rx="17" fill="#79D3AD" stroke="rgba(255,255,255,0.15)" filter="url(#softShadow)"/><text x="837.0" y="125.0" text-anchor="middle" fill="#10261B" font-size="13" font-weight="800">计算概论</text><rect x="922" y="106" width="116" height="38" rx="17" fill="rgba(0,0,0,0.28)"/><rect x="922" y="102" width="116" height="38" rx="17" fill="#79D3AD" stroke="rgba(255,255,255,0.15)" filter="url(#softShadow)"/><text x="980.0" y="125.0" text-anchor="middle" fill="#10261B" font-size="13" font-weight="800">人工智能基础</text><rect x="766" y="192" width="88" height="38" rx="17" fill="rgba(0,0,0,0.28)"/><rect x="766" y="188" width="88" height="38" rx="17" fill="#79D3AD" stroke="rgba(255,255,255,0.15)" filter="url(#softShadow)"/><text x="810.0" y="211.0" text-anchor="middle" fill="#10261B" font-size="13" font-weight="800">机器学习</text><rect x="884" y="194" width="186" height="38" rx="17" fill="rgba(0,0,0,0.28)"/><rect x="884" y="190" width="186" height="38" rx="17" fill="#79D3AD" stroke="rgba(255,255,255,0.15)" filter="url(#softShadow)"/><text x="977.0" y="213.0" text-anchor="middle" fill="#10261B" font-size="11.4" font-weight="800">电子信息中的机器学习</text><rect x="760" y="294" width="132" height="38" rx="17" fill="rgba(0,0,0,0.28)"/><rect x="760" y="290" width="132" height="38" rx="17" fill="#79D3AD" stroke="rgba(255,255,255,0.15)" filter="url(#softShadow)"/><text x="826.0" y="313.0" text-anchor="middle" fill="#10261B" font-size="13" font-weight="800">AI系统实践(I)</text><rect x="918" y="294" width="136" height="38" rx="17" fill="rgba(0,0,0,0.28)"/><rect x="918" y="290" width="136" height="38" rx="17" fill="#79D3AD" stroke="rgba(255,255,255,0.15)" filter="url(#softShadow)"/><text x="986.0" y="313.0" text-anchor="middle" fill="#10261B" font-size="11.4" font-weight="800">AI系统实践(II)</text><rect x="776" y="396" width="114" height="38" rx="17" fill="rgba(0,0,0,0.28)"/><rect x="776" y="392" width="114" height="38" rx="17" fill="#79D3AD" stroke="rgba(255,255,255,0.15)" filter="url(#softShadow)"/><text x="833.0" y="415.0" text-anchor="middle" fill="#10261B" font-size="13" font-weight="800">计算机视觉I</text><rect x="940" y="396" width="64" height="38" rx="17" fill="rgba(0,0,0,0.28)"/><rect x="940" y="392" width="64" height="38" rx="17" fill="#79D3AD" stroke="rgba(255,255,255,0.15)" filter="url(#softShadow)"/><text x="972.0" y="415.0" text-anchor="middle" fill="#10261B" font-size="13" font-weight="800">NLP</text><rect x="770" y="504" width="128" height="38" rx="17" fill="rgba(0,0,0,0.28)"/><rect x="770" y="500" width="128" height="38" rx="17" fill="#79D3AD" stroke="rgba(255,255,255,0.15)" filter="url(#softShadow)"/><text x="834.0" y="523.0" text-anchor="middle" fill="#10261B" font-size="13" font-weight="800">多智能体系统</text><rect x="926" y="504" width="122" height="38" rx="17" fill="rgba(0,0,0,0.28)"/><rect x="926" y="500" width="122" height="38" rx="17" fill="#79D3AD" stroke="rgba(255,255,255,0.15)" filter="url(#softShadow)"/><text x="987.0" y="523.0" text-anchor="middle" fill="#10261B" font-size="13" font-weight="800">机器人学概论</text><rect x="770" y="614" width="108" height="38" rx="17" fill="rgba(0,0,0,0.28)"/><rect x="770" y="610" width="108" height="38" rx="17" fill="#79D3AD" stroke="rgba(255,255,255,0.15)" filter="url(#softShadow)"/><text x="824.0" y="633.0" text-anchor="middle" fill="#10261B" font-size="13" font-weight="800">AI中的数学</text><rect x="924" y="614" width="88" height="38" rx="17" fill="rgba(0,0,0,0.28)"/><rect x="924" y="610" width="88" height="38" rx="17" fill="#79D3AD" stroke="rgba(255,255,255,0.15)" filter="url(#softShadow)"/><text x="968.0" y="633.0" text-anchor="middle" fill="#10261B" font-size="13" font-weight="800">数值分析</text><rect x="770" y="666" width="120" height="38" rx="17" fill="rgba(0,0,0,0.28)"/><rect x="770" y="662" width="120" height="38" rx="17" fill="#79D3AD" stroke="rgba(255,255,255,0.15)" filter="url(#softShadow)"/><text x="830.0" y="685.0" text-anchor="middle" fill="#10261B" font-size="13" font-weight="800">AI伦理与治理</text><rect x="926" y="666" width="106" height="38" rx="17" fill="rgba(0,0,0,0.28)"/><rect x="926" y="662" width="106" height="38" rx="17" fill="#79D3AD" stroke="rgba(255,255,255,0.15)" filter="url(#softShadow)"/><text x="979.0" y="685.0" text-anchor="middle" fill="#10261B" font-size="13" font-weight="800">AI硬件基石</text></svg></div>
+        <div class="legend">
+          <span><i class="dot fin"></i>Finance major</span>
+          <span><i class="dot ai"></i>AI double major</span>
+          <span><i class="dot shared"></i>Shared / interdisciplinary</span>
+        </div>
       </div>
     </section>
 
-    <section id="education" class="band block">
+    <section id="research" class="shell block" data-section="research">
+      <div class="heading reveal">
+        <p class="eyebrow">Selected projects</p>
+        <h2>Research themes across hard tech and primary-market work.</h2>
+        <p class="desc">This section keeps only the project directions you explicitly mentioned and focuses on your current primary-market mapping and AI infrastructure work.</p>
+      </div>
+      <div class="projects">
+        <article class="card featured reveal">
+          <div class="idx">01</div>
+          <p class="type">Current project</p>
+          <h3>Primary-Market Mapping Board</h3>
+          <p>An ongoing sourcing and research system for 一级市场项目筛选与追踪, covering technology-route mapping, company profiles, financing history, contact collection, comparable analysis and workflow automation across semiconductor equipment, optoelectronic chips, cooling and other hard-tech sectors.</p>
+          <div class="card-foot">
+            <ul class="tags"><li>一级市场</li><li>Mapping</li><li>Sourcing</li><li>AI workflow</li></ul>
+            <a class="soon" href="#">Ongoing ↗</a>
+          </div>
+        </article>
+        <article class="card reveal">
+          <div class="idx">02</div>
+          <p class="type">AI infrastructure</p>
+          <h3>Data-center Cooling and Power</h3>
+          <p>Research on liquid cooling, power systems, energy storage and infrastructure bottlenecks created by AI-compute growth.</p>
+          <div class="card-foot"><ul class="tags"><li>AIDC</li><li>Cooling</li><li>Power</li></ul><a class="soon" href="#">Coming soon ↗</a></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="education" class="band block" data-section="education">
       <div class="shell">
-        <div class="heading reveal"><p class="eyebrow">Education &amp; recognition</p><h2>Finance foundations, technical training and analytical rigor.</h2></div>
+        <div class="heading reveal">
+          <p class="eyebrow">Education &amp; recognition</p>
+          <h2>Finance foundations, technical training and analytical rigor.</h2>
+        </div>
         <div class="edu">
-          <article class="edu-card reveal"><p class="year">From Sep 2026</p><h3>Tsinghua University</h3><p class="degree">School of Economics and Management</p><p>M.S. in Finance · Incoming student</p></article>
+          <article class="edu-card reveal"><p class="year">2026 — 2029</p><h3>Tsinghua University</h3><p class="degree">School of Economics and Management</p><p>M.S. in Finance · Incoming student</p></article>
           <article class="edu-card reveal"><p class="year">2022 — 2026</p><h3>Peking University</h3><p class="degree">Guanghua School of Management</p><p>B.A. in Finance</p></article>
           <article class="edu-card reveal"><p class="year">2024 — 2026</p><h3>Peking University</h3><p class="degree">Yuanpei College</p><p>Double degree in Artificial Intelligence</p></article>
         </div>
@@ -249,7 +491,10 @@
     </section>
 
     <section class="shell block">
-      <div class="heading reveal"><p class="eyebrow">Toolbox</p><h2>From financial models to agent-enabled research.</h2></div>
+      <div class="heading reveal">
+        <p class="eyebrow">Toolbox</p>
+        <h2>From financial models to agent-enabled research.</h2>
+      </div>
       <div class="skills">
         <div class="skill reveal"><h3>Investment</h3><p>Industry research · Company analysis · Financial modeling · Valuation · Investment memos · Due diligence</p></div>
         <div class="skill reveal"><h3>Technology</h3><p>Python · AI agents · CLI workflows · Structured data extraction · Research automation</p></div>
@@ -258,11 +503,14 @@
       </div>
     </section>
 
-    <section id="contact" class="shell block">
+    <section id="contact" class="shell block" data-section="contact">
       <div class="contact reveal">
-        <div><p class="eyebrow">Contact</p><h2>Let’s discuss technology, investment and capital markets.</h2></div>
+        <div>
+          <p class="eyebrow">Contact</p>
+          <h2>Let’s discuss technology, investment and capital markets.</h2>
+        </div>
         <div class="contact-side">
-          <a class="btn primary" href="mailto:2200015918@stu.pku.edu.cn">2200015918@stu.pku.edu.cn</a>
+          <a class="btn primary" href="mailto:shellybrown128w@gmail.com">shellybrown128w@gmail.com</a>
           <a class="resume" href="Xueyi-Wei-Resume.pdf">Résumé placeholder ↗</a>
           <p class="small">Upload your résumé beside this file and name it <b>Xueyi-Wei-Resume.pdf</b>.</p>
         </div>
@@ -270,17 +518,64 @@
     </section>
   </main>
 
-  <footer class="shell"><span>© <span id="year"></span> Xueyi Wei. Built for GitHub Pages.</span><a href="#top">Back to top ↑</a></footer>
+  <footer class="shell">
+    <span>© <span id="year"></span> Xueyi Wei. Built for GitHub Pages.</span>
+    <a href="#top">Back to top ↑</a>
+  </footer>
 
   <script>
-    const root=document.documentElement,theme=document.querySelector(".theme"),menu=document.querySelector(".menu"),nav=document.querySelector("nav");
-    const saved=localStorage.getItem("theme");
-    if(saved)root.dataset.theme=saved;else if(matchMedia("(prefers-color-scheme:light)").matches)root.dataset.theme="light";
-    function icon(){theme.textContent=root.dataset.theme==="dark"?"☼":"◐"} icon();
-    theme.onclick=()=>{root.dataset.theme=root.dataset.theme==="dark"?"light":"dark";localStorage.setItem("theme",root.dataset.theme);icon()};
-    menu.onclick=()=>nav.classList.toggle("open");nav.querySelectorAll("a").forEach(a=>a.onclick=()=>nav.classList.remove("open"));
-    const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("show");obs.unobserve(e.target)}}),{threshold:.12});
-    document.querySelectorAll(".reveal").forEach(x=>obs.observe(x));document.querySelector("#year").textContent=new Date().getFullYear();
+    const root = document.documentElement;
+    const theme = document.querySelector(".theme");
+    const menu = document.querySelector(".menu");
+    const nav = document.querySelector("nav");
+    const saved = localStorage.getItem("theme");
+    if (saved) root.dataset.theme = saved;
+    else if (matchMedia("(prefers-color-scheme: light)").matches) root.dataset.theme = "light";
+    function icon() { theme.textContent = root.dataset.theme === "dark" ? "☼" : "◐"; }
+    icon();
+    theme.onclick = () => {
+      root.dataset.theme = root.dataset.theme === "dark" ? "light" : "dark";
+      localStorage.setItem("theme", root.dataset.theme);
+      icon();
+    };
+    menu.onclick = () => nav.classList.toggle("open");
+    nav.querySelectorAll("a").forEach(a => a.onclick = () => nav.classList.remove("open"));
+
+    const obs = new IntersectionObserver(entries => entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+        obs.unobserve(entry.target);
+      }
+    }), { threshold: 0.12 });
+    document.querySelectorAll(".reveal").forEach(el => obs.observe(el));
+    document.querySelector("#year").textContent = new Date().getFullYear();
+
+    const fill = document.getElementById("scrollFill");
+    const cat = document.getElementById("scrollCat");
+    const sections = ["top", "about", "experience", "courses", "research", "education", "contact"]
+      .map(id => document.querySelector(`[data-section="${id}"]`) || document.getElementById(id))
+      .filter(Boolean);
+
+    function updateProgress() {
+      const doc = document.documentElement;
+      const maxScroll = doc.scrollHeight - window.innerHeight;
+      const progress = maxScroll > 0 ? (window.scrollY / maxScroll) : 0;
+      const pct = Math.max(0, Math.min(1, progress));
+      fill.style.height = `${pct * 100}%`;
+      const trackHeight = 220;
+      cat.style.bottom = `${pct * trackHeight}px`;
+
+      let currentIndex = 0;
+      const viewportMid = window.scrollY + window.innerHeight * 0.35;
+      sections.forEach((section, idx) => {
+        if (section.offsetTop <= viewportMid) currentIndex = idx;
+      });
+      marks.forEach((mark, idx) => mark.classList.toggle("active", idx === currentIndex));
+    }
+
+    updateProgress();
+    window.addEventListener("scroll", updateProgress, { passive: true });
+    window.addEventListener("resize", updateProgress);
   </script>
 </body>
 </html>
