@@ -51,14 +51,16 @@
       background:rgba(255,255,255,.10); overflow:visible;
     }
     .scroll-fill {
-      position:absolute; left:0; bottom:0; width:100%; height:0%;
+      position:absolute; left:0; top:0; width:100%; height:0%;
       border-radius:999px; background:linear-gradient(180deg, #efd3a4, #8dd8b2);
     }
     .scroll-cat {
-      position:absolute; left:50%; bottom:0; transform:translate(-50%, 50%);
-      width:34px; height:34px; display:grid; place-items:center; border-radius:50%;
-      background:linear-gradient(180deg, #fff7ec, #f3d6a7); box-shadow:0 8px 20px rgba(0,0,0,.22); font-size:19px;
+      position:absolute; left:50%; top:0; transform:translate(-50%, -50%);
+      width:38px; height:38px; display:grid; place-items:center;
+      filter:drop-shadow(0 8px 18px rgba(0,0,0,.24));
+      pointer-events:none;
     }
+    .scroll-cat svg { width:100%; height:100%; display:block; }
     .scroll-marks {
       position:absolute; top:26px; left:50%; transform:translateX(-50%);
       width:40px; display:flex; flex-direction:column; gap:19px; align-items:center;
@@ -318,7 +320,24 @@
       </div>
       <div class="scroll-track">
         <div class="scroll-fill" id="scrollFill"></div>
-        <div class="scroll-cat" id="scrollCat">🐱</div>
+        <div class="scroll-cat" id="scrollCat" aria-hidden="true">
+          <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="cat">
+            <defs>
+              <linearGradient id="catFace" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#FFF7EC"/>
+                <stop offset="100%" stop-color="#F3D6A7"/>
+              </linearGradient>
+            </defs>
+            <path d="M18 18 L24 8 L30 18" fill="#F3D6A7" stroke="#6B5332" stroke-width="2.2" stroke-linejoin="round"/>
+            <path d="M34 18 L40 8 L46 18" fill="#F3D6A7" stroke="#6B5332" stroke-width="2.2" stroke-linejoin="round"/>
+            <circle cx="32" cy="34" r="18" fill="url(#catFace)" stroke="#6B5332" stroke-width="2.2"/>
+            <circle cx="25" cy="32" r="2.3" fill="#43321E"/>
+            <circle cx="39" cy="32" r="2.3" fill="#43321E"/>
+            <path d="M32 35.5 L29.3 38.5 H34.7 Z" fill="#D88B8B"/>
+            <path d="M27.5 41 Q32 44 36.5 41" fill="none" stroke="#6B5332" stroke-width="2" stroke-linecap="round"/>
+            <path d="M20 38 H11 M20 42 H11 M44 38 H53 M44 42 H53" stroke="#6B5332" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
       </div>
     </div>
   </div>
@@ -552,25 +571,18 @@
 
     const fill = document.getElementById("scrollFill");
     const cat = document.getElementById("scrollCat");
-    const sections = ["top", "about", "experience", "courses", "research", "education", "contact"]
-      .map(id => document.querySelector(`[data-section="${id}"]`) || document.getElementById(id))
-      .filter(Boolean);
+    const track = document.querySelector(".scroll-track");
 
     function updateProgress() {
       const doc = document.documentElement;
-      const maxScroll = doc.scrollHeight - window.innerHeight;
-      const progress = maxScroll > 0 ? (window.scrollY / maxScroll) : 0;
+      const maxScroll = Math.max(1, doc.scrollHeight - window.innerHeight);
+      const progress = window.scrollY / maxScroll;
       const pct = Math.max(0, Math.min(1, progress));
-      fill.style.height = `${pct * 100}%`;
-      const trackHeight = 220;
-      cat.style.bottom = `${pct * trackHeight}px`;
 
-      let currentIndex = 0;
-      const viewportMid = window.scrollY + window.innerHeight * 0.35;
-      sections.forEach((section, idx) => {
-        if (section.offsetTop <= viewportMid) currentIndex = idx;
-      });
-      marks.forEach((mark, idx) => mark.classList.toggle("active", idx === currentIndex));
+      fill.style.height = `${pct * 100}%`;
+
+      const trackHeight = track.clientHeight;
+      cat.style.top = `${pct * trackHeight}px`;
     }
 
     updateProgress();
