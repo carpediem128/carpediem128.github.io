@@ -1,39 +1,26 @@
-# Homepage Demo — v6
+# Hi, I'm Xueyi (Shelly) Wei
 
-This version makes a small visual refinement to the cute page progress bar.
+Finance background. AI toolkit. A curiosity for what comes next.
 
-## Change made
-- Removed the highlighted color effect on the small horizontal section marks.
-- The scroll widget now feels cleaner:
-  - the cat-head marker still moves with scroll progress
-  - the vertical progress fill still moves with the cat
-  - the small horizontal marks stay neutral
+## Come Say Hello
 
-This matches your request to either:
-1. make the horizontal lines match the cat position, or
-2. remove their highlighting
+**[Visit my personal website →](https://carpediem128.github.io/)**
 
-This version uses the cleaner second approach.
+A little about my background, the technologies I research, and the tools I build.
 
+- **Background:** Finance and Artificial Intelligence at Peking University; incoming M.S. in Finance at Tsinghua SEM.
+- **Experience:** Investment and research internships at Hillhouse, Tencent Investment, CICC Capital and CSC Securities.
+- **Interests:** Semiconductors, AI infrastructure, hard-tech investing and AI-enabled research.
 
-# Xueyi Wei Personal Homepage
+## Something I've Built
 
-## Upload to GitHub Pages
+**[Mapping Agent →](https://github.com/carpediem128/Mapping-Agent)**  
+An investment research workspace connecting market themes, company mapping and contact tracking, with Excel import and export.
 
-1. Create a public GitHub repository named exactly:
-   `YOUR_USERNAME.github.io`
-2. Upload `index.html` to the repository root.
-3. Optional: upload your résumé beside it and name it:
-   `Xueyi-Wei-Resume.pdf`
-4. Go to **Settings → Pages**.
-5. Select **Deploy from a branch**, branch `main`, folder `/ (root)`.
-6. Your website will be available at:
-   `https://YOUR_USERNAME.github.io`
+## Let's Connect
 
-## Before publishing
+Questions, ideas, or a shared research interest? [Drop me a note](mailto:shellybrown128w@gmail.com).
 
-- Replace all `href="#"` project placeholders with real links.
-- Update “Based in Beijing” if needed.
-- Add LinkedIn and GitHub profile links in the contact section.
-- Edit any experience wording directly in `index.html`.
-- The whole website is self-contained: no separate CSS or JavaScript files are required.
+---
+
+This site runs on GitHub Pages with HTML, CSS and JavaScript. No build step required.
